@@ -174,9 +174,9 @@
 
 /* ...........................................Category wise Page.............................................................. */
 /* ____________________________________________________________ Restaurant _____________________________________________________*/
-            body
+           body
            {
-               max-width: 1520px;
+               min-width: 1520px;
            }
             nav
             {
@@ -272,17 +272,17 @@
                 color: #ff5581;
               }
               @media screen and (max-width:1000px){
-                .images1
+                .images
                 {
-                  margin-left: 400px;
+                  margin-left: 200px;
                 }
               }
               @media screen and (min-width:1700px){
-                .images1
+                .images
                 {
                   margin-left: 60px;
                 }
-              }
+            }
 /* ____________________________________________________________ Doctors _____________________________________________________*/
 .images1, .images2
 {
@@ -340,7 +340,7 @@ transition: width 1s, height 1s, background-color 1s, transform 1s;
 @media screen and (max-width:1000px){
     .images1
     {
-      margin-left: 400px;
+      margin-left: 200px;
     }
   }
   @media screen and (min-width:1700px){
@@ -383,7 +383,7 @@ cursor: pointer;
 @media screen and (max-width:1000px){
     .images2
     {
-      margin-left: 400px;
+      margin-left: 200px;
     }
   }
   @media screen and (min-width:1700px){
