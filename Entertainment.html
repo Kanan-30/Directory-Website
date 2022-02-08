@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+        <link rel ="stylesheet" href="style.css">
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+        <style>
+            
+            a , .menu-btn , .links-hidden
+            {
+                color: black;
+            }
+        </style>
+        <title>Entertainment</title>
+    </head>
+        <body ng-app = "mainApp" ng-controller = "BakeryController">
+            <div class="bg" ></div>
+            <nav>
+               <img src = "Images/mumbai.png"  align="left" class="logo1" >
+                <a href="index.html">Home</a>
+                <div class="dropdown-menu">
+                <a href="#" class="menu-btn">Category  <i class="fa fa-caret-down"></i></a>
+                    <div class="menu-content">
+                   <a class="links-hidden" href="restaurant.html">Restaurant</a>
+                   
+                    <a class="links-hidden" href="Doctors.html">Doctor</a>
+                    <a class="links-hidden" href="Entertainment.html">Entertainment</a>
+                    </div>
+                    </div>
+                    <a href="#"class="login"><i class="fa fa-user-o"></i>  Login</a>
+            </nav>
+            </div>
+            <div class="page" >
+                Select Location: <select ng-model="selected" name="location">
+                    <option value="all" selected>All Region</option>
+                    <option value="Navi Mumbai">Navi Mumbai</option>
+                    <option value="Andheri">Andheri</option>
+                  </select>
+                  <br>
+                <div ng-repeat = "details in Bakery.details | filter : {location: selected ||'all'}" class="images2">
+                    <img src = "Images/{{details.img}}" class="img2" align="left">
+                    <div class="content">
+                    <br>
+                    <p>
+                        <h4 class="name">{{details.Pname}}</h4>
+                        <h4 class="name">{{details.Mname}}</h4>
+                        <br>
+                        <span><i class="fa fa-map-marker"></i>    {{details.add}}</span>
+                    </p>   
+                </div>   
+            </div>
+            <script>
+                var mainApp = angular.module("mainApp", []); 
+                mainApp.controller('BakeryController', function($scope) {
+                    $scope.Bakery = {
+                    details:[{img:'infinity.jpg',Pname:'PVR Icon Gold',Mname:'Infinity Mall',location:'Andheri all',add:'New Link Rd, Phase D, Oshiwara, Andheri West, Mumbai, Maharashtra 400053'},{img:'inox.jpg',Pname:'Inox Cinema',Mname:'Inorbit Mall',location:'Andheri all',add:'2nd Floor, Inorbit Mall, New Link Rd, Mindspace, Malad West, Mumbai, Maharashtra 400064'},{img:'icon.jpg',Pname:'PVR Icon',Mname:'Oberoi Mall',location:'Andheri all',add:'Oberoi Mall General AK Vidya Marg,Goregaon, Mumbai, Maharashtra 400063'},{img:'inox_vashi.jpg',Pname:'Inox',Mname:'Galleria Mall',location:'Navi Mumbai all',add:' INOX Leisure Ltd., Plot No.17,Palm Beach Rd, Phase 2, Sector 19D, Vashi'},{img:'carnival.png',Pname:'Carnival Cinemas',Mname:'Little World',location:'Navi Mumbai all',add:'Plot No.21,Little World Mall, Sector - 2,Kharghar, Navi Mumbai, Maharashtra 410210'},{img:'inox_kharghar.jpg',Pname:'Inox',Mname:'Glomax Mall',location:'Navi Mumbai all',add:'Glomax Mall, INOX Leisure Ltd.,3rd Floor,West, Sector 2, Kharghar, Navi Mumbai'}]
+                    ,
+	
+           
+            };
+  	
+         });
+                    </script>
+        </body>
+</html>

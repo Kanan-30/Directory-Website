@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+        <link rel ="stylesheet" href="style.css">
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+        <style>
+            
+            a , .menu-btn , .links-hidden
+            {
+                color: black;
+            }
+        </style>
+        <title>Doctors</title>
+    </head>
+        <body ng-app = "mainApp" ng-controller = "DoctorController">
+            <div class="bg" ></div>
+            <nav>
+               <img src = "Images/mumbai.png"  align="left" class="logo1" >
+                <a href="index.html">Home</a>
+                <div class="dropdown-menu">
+                <a href="#" class="menu-btn">Category  <i class="fa fa-caret-down"></i></a>
+                    <div class="menu-content">
+                   <a class="links-hidden" href="restaurant.html">Restaurant</a>
+                   
+                    <a class="links-hidden" href="Doctors.html">Doctor</a>
+                    <a class="links-hidden" href="Entertainment.html">Entertainment</a>
+                    </div>
+                    </div>
+                    <a href="#"class="login"><i class="fa fa-user-o"></i>  Login</a>
+            </nav>
+            </div>
+            <div class="page" >
+                Select Location: <select ng-model="selected" name="location">
+                    <option value="all" selected>All Region</option>
+                    <option value="Dadar">Dadar</option>
+                    <option value="Navi Mumbai">Navi Mumbai</option>
+                  </select>
+                  Select Category: <select ng-model="selected1">
+                      <option value="all">All</option>
+                    <option value="Cardiologist">Cardiologist</option>
+                    <option value="Dentist">Dentist</option>
+                    <option value="Physician">Physician</option>
+                    </select>
+                  <br>
+                <div ng-repeat = "details in Doctor.details | filter : {location: selected ||'all'}|filter:{type1: selected1 ||'all'} " class="images1">
+                    <img src = "Images/{{details.hospital}}" class="img2">
+                    <img src = "Images/{{details.doctor}}" class="img3" align="right">
+                    <div class="content">
+                    <br>
+                    <p>
+                        <h4 class="name">{{details.Dname}}</h4>
+                        <h4 class="name">{{details.Hname}}</h4>
+                        <span class="des">{{details.type}}</span>
+                        <br>
+                        <br>
+                        <label>{{details.rating}}   <i class="fa fa-star"></i></label>
+                        <br>
+                        <br>
+                        <span><i class="fa fa-map-marker"></i>    {{details.add}}</span>
+                    </p>   
+                </div>   
+            </div>
+            <script>
+                var mainApp = angular.module("mainApp", []); 
+                mainApp.controller('DoctorController', function($scope) {
+                    $scope.Doctor = {
+                    details:[{hospital:'fortis.jpg', doctor:'grkane.jpg',Dname:'Dr. Ankur Phatarpekar',Hname:'Care For Your Heart',type:'Cardiologist', type1:'Cardiologist all', location:'Dadar all',rating:5,add:'Symbiosis speciality clinic 4th floor doctor house infront of Plaza cinema, Dadar West'},{hospital:'symbosis.jpg', doctor:'ankur.png',Dname:'Dr. G. R. Kane',Hname:'Care For Your Heart',type:'Cardiologist', type1:'Cardiologist all',location:'Dadar all',rating:5,add:'Fortis Hospital, Ranade Rd, Dadar West, Dadar, Mumbai'},{hospital:'pdhinduja.jpg', doctor:'ameya.png',Dname:'Dr. Ameya Udyavar ',Hname:'PD Hinduja Hospital ',type:'Cardiologist', type1:'Cardiologist all',location:'Dadar all',rating:4.5,add:'  P.D.Hinduja Hospital & Medical Research Centre, SVS Rd, Mahim West, Mumbai '},{hospital:'vivekkarve.jpg', doctor:'vivek1.jpg',Dname:'Dr Vivek Karve',Hname:'PD Hinduja Hospital ',type:'Dentist', type1:'Dentist all',location:'Dadar all',rating:5,add:'Cypress,No. B-106, M 001,1st Floor,Central Ave, Hiranandani Gardens, Powai, Mumbai '},{hospital:'orthosquare.jpg', doctor:'harshada.jpg',Dname:'Dr. Harshada Mane',Hname:'Orthosquare Dental Clinic ',type:'Dentist',type1:'Dentist all', location:'Dadar all',rating:5,add:' Shop No. 2, Ground Floor, Abdul Kader Building, Gokhale Rd, opp. Portuguese Church, Dadar, W'},{hospital:'smileagain.jpg', doctor:'dhruti.jpg',Dname:'Dr. Dhruti Raut',Hname:'Smile Again Dental Clinic',type:'Dentist', type1:'Dentist all',location:'Dadar all',rating:4.5,add:' B/1 Rajgir Court, Opposite Midtown Pritam Hotel, Swami Gyan Jivandas Marg, Dadar East'},{hospital:'namita.jpg', doctor:'rajesh.jpg',Dname:'Dr Rajesh Uchil',Hname:'Namita Clinic',type:'Physician',type1:'Physician all', location:'Dadar all',rating:4.5,add:'Ground Floor, LMT Building, North, Gokhale Rd,Dadar '},{hospital:'global_hospital.jpg', doctor:'suresh.png',Dname:'Dr. Suresh Jain',Hname:'Global Hospital',type:'Physician',type1:'Physician all', location:'Dadar all',rating:4.5,add:'C/O Global Hospital, 35, Hospital Avenue, Dr E Borges Road,, Dadar, Mumbai '},{hospital:'terna.jpg', doctor:'mahesh.jpg',Dname:'Dr. Mahesh Subhash Ghogare',Hname:'Terna Speciality Hospital',type:'Cardiologist', type1:'Cardiologist all',location:' Navi Mumbai all',rating:4.5,add:'Plot no 12, Sector 22, Nerul West, Opp. Nerul Railway Station, Navi Mumbai'},{hospital:'apollo.jpg', doctor:'rahul.jpg',Dname:'Dr. Rahul Gupta',Hname:'Apollo Hospital',type:'Cardiologist',type1:'Cardiologist all', location:' Navi Mumbai all',rating:4.5,add:'Plot Number 13, Parsik Hill Road, Off Uran Road, Sector 23, CBD Belapur'},{hospital:'mpct.jpg', doctor:'ratan.jpg',Dname:'Dr. Ratan Rathod',Hname:'MPCT Hospital',type:'Cardiologist', type1:'Cardiologist all',location:' Navi Mumbai all',rating:4.5,add:'C-7, Budhyadev Mandir Marg, Sector - 4, Landmark: Near Saraswat Co-Operative Bank'},{hospital:'swathi.png', doctor:'dalbir.jpg',Dname:'Dr. Dalbir Singh',Hname:'Swati Dental Clinic',type:'Dentist', type1:'Dentist all',location:' Navi Mumbai all',rating:5,add:'NL-2/12/C-4, Sector-9, Nerul East,next To Corporator Santosh Shetty Office'},{hospital:'dentplus.jpg', doctor:'atish.jpg',Dname:'Dr. Atish Deepak Korwar',Hname:'Dentplus Multispeciality Dental Clinic',type:'Dentist',type1:'Dentist all', location:' Navi Mumbai all',rating:4.5,add:'Shop Number 3, Neelam Apartment,Ground Floor'},{hospital:'clinique.jpg', doctor:'bhavesh.jpg',Dname:'Dr. Bhavesh Gupta',Hname:'CLINIQUE - Advanced Dental & Facial Aesthetic Center',type:'Dentist',type1:'Dentist all', location:' Navi Mumbai all',rating:5,add:'Ground Floor, Om Shristi Building, Sector 20'},{hospital:'more.jpg', doctor:'priya.jpg',Dname:'Dr. Priya B Chatterjee',Hname:'Mores Healthcare',type:'Physician',type1:'Physician all', location:'Navi Mumbai all',rating:5,add:'House number:61, Podi-1, Sector 15, Panvel Navi Mumbai'},{hospital:'apollo.jpg', doctor:'laxman.jpg',Dname:'Dr. Laxman Jessani',Hname:'Apollo Hospitals',type:'Physician',type1:'Physician all', location:'Navi Mumbai all',rating:5,add:'Plot Number 13, Parsik Hill Road, Off Uran Road, Sector 23, CBD Belapur'},{hospital:'apollo.jpg', doctor:'anand.jpg',Dname:'Dr. Anand Misra',Hname:'Apollo Hospitals',type:'Physician',type1:'Physician all', location:'Navi Mumbai all',rating:5,add:'Plot Number 13, Parsik Hill Road, Off Uran Road, Sector 23, CBD Belapur'}]
+                    ,
+	
+           
+            };
+  	
+         });
+                    </script>
+        </body>
+</html>

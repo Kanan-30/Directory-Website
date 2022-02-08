@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+        <link rel ="stylesheet" href="style.css">
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+        <style>
+            
+            a , .menu-btn , .links-hidden
+            {
+                color: black;
+            }
+        </style>
+        <title>Restaurants</title>
+    </head>
+        <body ng-app = "mainApp" ng-controller = "restaurantController">
+            <div class="bg" ></div>
+            <nav>
+               <img src = "Images/mumbai.png"  align="left" class="logo1" >
+                <a href="index.html">Home</a>
+                <div class="dropdown-menu">
+                <a href="#" class="menu-btn">Category  <i class="fa fa-caret-down"></i></a>
+                    <div class="menu-content">
+                   <a class="links-hidden" href="restaurant.html">Restaurant</a>
+                   
+                    <a class="links-hidden" href="Doctors.html">Doctor</a>
+                    <a class="links-hidden" href="Entertainment.html">Entertainment</a>
+                    </div>
+                    </div>
+                    <a href="#"class="login"><i class="fa fa-user-o"></i>  Login</a>
+            </nav>
+            </div>
+            <div class="page" >
+                Select Region: <select ng-model="selected" name="restaurant" >
+                    <option value="all" selected>All Region</option>
+                    <option value="Kharghar">Kharghar</option>
+                    <option value="Andheri ">Andheri</option>
+                    <option value="Bandra">Bandra</option>
+                  </select>
+                  Sort By: <select ng-model="selected1">
+                    <option value="-rating">Highest Rating</option>
+                    <option value="rating">Lowest Rating</option>
+                    </select>
+                <img src = "Images/view.png" align="right" class="logo2">  
+                  <br>
+                <div ng-repeat = "details in restaurant.details | filter : {location: selected ||'all'}| orderBy: selected1" class="images">
+                    <img src = "Images/{{details.image}}" class="img1" align="left">
+                    <br>
+                    <p>
+                        <h4 class="name">{{details.name}}</h4>
+                        <span class="des">{{details.des}}</span>
+                        <br>
+                        <br>
+                        <label>{{details.rating}}      <i class="fa fa-star"></i></label>
+                        <br>
+                        <br>
+                        <span><i class="fa fa-map-marker"></i>    {{details.add}}</span>
+                    </p>      
+            </div>
+            <script>
+                var mainApp = angular.module("mainApp", []); 
+                mainApp.controller('restaurantController', function($scope) {
+                    $scope.restaurant = {
+                    details:[{image :'nanuji.jpg',name:'Nanuji- By Nanumal Bhojraj',des:'North Indian, Continental, Chinese, Beverages, Shake',add:' Kharghar Sector 12',location:'Kharghar all',rating:'4.1'},{image :'shivsagar.jpg',name:'New Shiv Sagar Restaurant',des:'Pure Veg Family Restaurant',add:' Kharghar Sector 12',location:'Kharghar all',rating:'4'},{image :'cheelizza.jpg',name:'Cheelizza - India Ka Pizza',des:'Pizza, Fast Food, Desserts, Beverages',add:' Kharghar Sector 20',location:'Kharghar all',rating:'4.3'},
+                {image :'village.png',name:'Village 12-20 Pure Veg Restaurant',des:'Pure Veg Family Restaurant',add:' Kharghar Sector 35',location:'Kharghar all',rating:'4'},{image :'dominos.jpg',name:'Dominos Pizza',des:'Pizza, Fast Food, Desserts, Beverages',add:' Kharghar Sector 20',location:'Kharghar all',rating:'4.3'},{image :'mc.jpg',name:'McDonalds',des:'Burger, Fast Food, Desserts, Coffee',add:' Kharghar Sector 20',location:'Kharghar all',rating:'4.3'},{image :'hakkasan.jpg',name:'Hakkasan Mumbai',des:'Fine Dining and Chinese Cuisine',add:' Krystal Building, Waterfield Road',location:'Bandra all',rating:'4.4'},{image :'pali.jpg',name:'Pali Village Cafe',des:'Continental, Italian, Fast Food, Mexican, Beverages',add:' Pali Hill, Bandra West, Mumbai',location:'Bandra all',rating:'4.3'},{image :'eat.jpg',name:'Eat Around the Corner',des:'American, Italian, Wraps, Desserts, Shake, Mexican',add:' Pali Hill, Bandra West, Mumbai',location:'Bandra all',rating:'4.3'},{image :'global_fusion.jpg',name:'Global Fusion',des:'North Indian, Chinese and Sushi',add:' Link Square Mall, Bandra west',location:'Bandra all',rating:'4.4'},{image :'smoke_house.jpg',name:'Smoke House Deli',des:'Italian, Fast Food, Burger, Salad, Sandwich, Healthy Food, Juices, Beverages',add:' Pali Hill, Bandra West, Mumbai',location:'Bandra all',rating:'4.2'},{image :'veranda.jpg',name:'Veranda',des:'North Indian, Oriental, Desserts, Beverages',add:'Pali Hill, Bandra West, Mumbai',location:'Bandra all',rating:'4.4'},{image :'glocal.jpg',name:'Glocal Junction',des:'North Indian, Continental, Finger Food, Biryani, Desserts, Beverages',add:'Worli, Mumbai',location:'Andheri all',rating:'4.5'},{image :'root.jpg',name:'Roots Of India',des:'North Indian, Chinese, Mughlai, Asian, Desserts, Beverages',add:'Times Square, Marol',location:'Andheri all',rating:'4.2'},{image :'flying.jpg',name:'The Flying Saucer',des:'Bar Food, Continental, North Indian, Beverages',add:'Andheri Lokhandwala, Andheri West, Mumbai',location:'Andheri all',rating:'4'},{image :'tikka.jpg',name:'Ticca Tikka',des:'North Indian, Mughlai, Chinese, Malwani',add:'Andheri Lokhandwala, Andheri West, Mumbai',location:'Andheri all',rating:'4.1'},{image :'vedge.png',name:'Vedge',des:'Asian, North Indian, Beverages, Fast Food',add:'Fun Republic Mall, Veera Desai Area, Mumbai',location:'Andheri all',rating:'4.3'},{image :'yazu.jpg',name:'Yazu - Pan Asian Supper Club',des:'Thai, Korean, Japanese, Chinese',add:'Oshiwara, Andheri West',location:'Andheri all',rating:'4.8'}]
+                    ,
+	
+           
+            };
+  	
+         });
+                    </script>
+        </body>
+</html>
